@@ -24,7 +24,7 @@ namespace EVEm8.CliLauncher
           HelpText = "Server name (tq, sisi, duality)")]
         public string Server { get; set; }
 
-        [Option("settingsprofile",
+        [Option("settingsprofile", DefaultValue = 1,
           HelpText = "Settings profile")]
         public int Settings { get; set; }
 
