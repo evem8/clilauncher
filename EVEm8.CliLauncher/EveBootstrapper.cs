@@ -29,6 +29,14 @@ namespace EVEm8.CliLauncher
         private static string indexUrl = "{0}/evelauncher_{1}.txt";
 
         // FIXME: Temporary
+        public static Dictionary<string, string> servers = new Dictionary<string, string>
+        {
+            {"tq", "87.237.38.200"},
+            {"sisi", "87.237.38.50"},
+            {"duality", "87.237.38.60"},
+            {"mp", "87.237.38.51"},
+            {"chaos", "87.237.38.55"},
+        };
         private static Dictionary<string, string> refreshUrls = new Dictionary<string,string>
         {
             {"tq", "https://client.eveonline.com/launcher/en/SSORefreshUser/"},

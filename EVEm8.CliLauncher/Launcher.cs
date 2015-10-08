@@ -24,44 +24,7 @@ namespace EVEm8.CliLauncher
             error = null;
 
             // Load server list
-            var servers = new Dictionary<string, string>();
-            try
-            {
-                int version = EveBootstrapper.GetVersion();
-                var index = EveBootstrapper.GetIndex(version);
-                if (!index.ContainsKey("app:/servers.json"))
-                {
-                    error = "servers.json was not found in the index";
-                    return false;
-                }
-
-                var json = EveBootstrapper.GetJsonResource(index["app:/servers.json"].cacheName);
-                if (json["servers"] != null)
-                {
-                    var jsonServers = json["servers"];
-                    foreach (var server in jsonServers)
-                    {
-                        var name = ((Newtonsoft.Json.Linq.JProperty)server).Name;
-                        var prop = ((Newtonsoft.Json.Linq.JProperty)server).Value;
-                        servers.Add(name, (string)prop["server"]);
-                    }
-                }
-                else
-                {
-                    error = "Failed to parse servers.json";
-                    return false;
-                }
-            }
-            catch (VersionException e)
-            {
-                error = "Failed to get EVE launcher version: " + e.Message;
-                return false;
-            }
-            catch (IndexException e)
-            {
-                error = "Failed to get EVE launcher index: " + e.Message;
-                return false;
-            }
+            var servers = EveBootstrapper.servers;
 
             if (!servers.ContainsKey(options.Server))
             {
