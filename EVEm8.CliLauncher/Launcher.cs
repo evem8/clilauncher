@@ -78,7 +78,7 @@ namespace EVEm8.CliLauncher
             {
                 launchArgs += " /triPlatform=dx9";
             }
-            if (options.Settings != 0)
+            if (options.Settings != "")
             {
                 launchArgs += " /settingsprofile=" + options.Settings;
             }

@@ -24,9 +24,9 @@ namespace EVEm8.CliLauncher
           HelpText = "Server name (tq, sisi, duality)")]
         public string Server { get; set; }
 
-        [Option("settingsprofile", DefaultValue = 1,
+        [Option("settingsprofile", DefaultValue = "1",
           HelpText = "Settings profile")]
-        public int Settings { get; set; }
+        public string Settings { get; set; }
 
         [Option("dx9", DefaultValue = false,
           HelpText = "Force DirectX 9")]
