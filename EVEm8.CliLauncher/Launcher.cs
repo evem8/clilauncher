@@ -54,6 +54,20 @@ namespace EVEm8.CliLauncher
                 }
             }
 
+            if (options.Settings == null)
+            {
+                var settings = EveBootstrapper.GetSettings(options.Server);
+                if (!settings.ContainsKey(options.Account))
+                {
+                    error = "No settings found for account '" + options.Account + "' on " + options.Server;
+                    return false;
+                }
+                else
+                {
+                    options.Settings = settings[options.Account];
+                }
+            }
+
             // Get client location
             var dir = EveBootstrapper.GetClientLocation(options.Server);
             if (!Directory.Exists(dir))

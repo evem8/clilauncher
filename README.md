@@ -8,7 +8,7 @@ Command line options:
 
 --account			Account name
 --server			Server name (tq, sisi, duality)
---settingsprofile	Settings profile number (1-7)
+--settingsprofile	Forces settings profile (defaults to one used in launcher)
 --dx9				Use DirectX 9
 --dx11				Use DirectX 11
 ```

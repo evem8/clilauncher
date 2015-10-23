@@ -206,6 +206,52 @@ namespace EVEm8.CliLauncher
         }
 
         /// <summary>
+        /// Get account settings for the specified server
+        /// </summary>
+        /// <param name="server">Server name</param>
+        /// <returns>Dict</returns>
+        public static Dictionary<string, string> GetSettings(string server)
+        {
+            var settings = new Dictionary<string, string>();
+
+            string baseDir = String.Format(@"{0}\CCP\EVE\QtWebEngine\Default\Local Storage\",
+                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData));
+
+            string[] files = Directory.GetFiles(baseDir, "*.localstorage");
+            foreach (var file in files)
+            {
+                SQLiteConnection dbConnection = new SQLiteConnection(String.Format("Data Source={0};Version=3;", file));
+                dbConnection.Open();
+
+                SQLiteCommand command = dbConnection.CreateCommand();
+                command.CommandType = CommandType.Text;
+                command.CommandText = "SELECT value FROM itemTable WHERE key LIKE @key";
+                command.Parameters.Add(new SQLiteParameter("@key", String.Format("tokens{0}_%", server)));
+                SQLiteDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    byte[] blob = (byte[])reader["value"];
+                    string value = Encoding.Unicode.GetString(blob, 0, blob.Length);
+                    JObject json = JObject.Parse(value);
+                    foreach (var item in json)
+                    {
+                        if (item.Value["userName"] != null && item.Value["setting"] != null)
+                        {
+                            if (!settings.ContainsKey((string)item.Value["userName"]))
+                            {
+                                settings.Add((string)item.Value["userName"], (string)item.Value["setting"]);
+                            }
+                        }
+                    }
+                }
+
+                dbConnection.Close();
+            }
+
+            return settings;
+        }
+
+        /// <summary>
         /// Logs in using the refresh token and returns a launcher token
         /// </summary>
         /// <param name="refreshToken">Refresh token</param>
