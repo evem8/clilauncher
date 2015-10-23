@@ -51,7 +51,7 @@ namespace EVEm8.CliLauncher
                 {
                     MessageBox.Show("EVEm8 CLI launcher is out of date.\nAn optional update is available for download.\n\nPlease go to https://evem8.com/cli to update.\n\nYou will not be reminded to download this version again.", "EVEm8 CLI Launcher");
 
-                    //Properties.Settings.Default.lastUpdateCheck = (string)json["version"];
+                    Properties.Settings.Default.lastUpdateCheck = (string)json["version"];
                     Properties.Settings.Default.Save();
                 }
             }

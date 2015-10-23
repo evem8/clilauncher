@@ -168,7 +168,7 @@ namespace EVEm8.CliLauncher
         {
             var tokens = new Dictionary<string, string>();
 
-            string baseDir = String.Format(@"{0}\CCP\EVEONLINE\QtWebEngine\Default\Local Storage\",
+            string baseDir = String.Format(@"{0}\CCP\EVE\QtWebEngine\Default\Local Storage\",
                 Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData));
 
             string[] files = Directory.GetFiles(baseDir, "*.localstorage");
