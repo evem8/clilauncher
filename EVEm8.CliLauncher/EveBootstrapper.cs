@@ -24,7 +24,7 @@ namespace EVEm8.CliLauncher
     /// </summary>
     class EveBootstrapper
     {
-        private static string baseUrl = "http://d17ueqc3zm9j8o.cloudfront.net";
+        private static string baseUrl = "http://binaries.eveonline.com";
         private static string versionUrl = "{0}/evelauncher_release.json";
         private static string indexUrl = "{0}/evelauncher_{1}.txt";
 
@@ -235,11 +235,11 @@ namespace EVEm8.CliLauncher
                     JObject json = JObject.Parse(value);
                     foreach (var item in json)
                     {
-                        if (item.Value["userName"] != null && item.Value["setting"] != null)
+                        if (item.Value["userName"] != null && item.Value["profile"] != null)
                         {
                             if (!settings.ContainsKey((string)item.Value["userName"]))
                             {
-                                settings.Add((string)item.Value["userName"], (string)item.Value["setting"]);
+                                settings.Add((string)item.Value["userName"], (string)item.Value["profile"]);
                             }
                         }
                     }
