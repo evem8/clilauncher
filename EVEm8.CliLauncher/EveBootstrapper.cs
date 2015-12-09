@@ -31,19 +31,23 @@ namespace EVEm8.CliLauncher
         // FIXME: Temporary
         public static Dictionary<string, string> servers = new Dictionary<string, string>
         {
-            {"tq", "87.237.38.200"},
-            {"sisi", "87.237.38.50"},
-            {"duality", "87.237.38.60"},
-            {"mp", "87.237.38.51"},
-            {"chaos", "87.237.38.55"},
+            {"tq", "tranquility"},
+            {"sisi", "singularity"},
+            {"duality", "duality"},
+            {"mp", "multiplicity"},
+            {"quantum", "quantum"},
+            {"solace", "solace"},
+            {"chaos", "chaos"},
         };
         private static Dictionary<string, string> refreshUrls = new Dictionary<string,string>
         {
             {"tq", "https://client.eveonline.com/launcher/en/SSORefreshUser/"},
             {"sisi", "https://client.testeveonline.com/launcher/en/SSORefreshUser/"},
             {"duality", "https://dualityclient.testeveonline.com/launcher/en/SSORefreshUser/"},
-            {"mp", "https://multiclient.eveonline.com/launcher/en/SSORefreshUser/"},
-            {"chaos", "https://chaosclient.eveonline.com/launcher/en/SSORefreshUser/"},
+            {"mp", "https://multiclient.testeveonline.com/launcher/en/SSORefreshUser/"},
+            {"quantum", "https://quantumclient.testeveonline.com/launcher/en/SSORefreshUser/"},
+            {"solace", "https://solaceclient.testeveonline.com/launcher/en/SSORefreshUser/"},
+            {"chaos", "https://chaosclient.testeveonline.com/launcher/en/SSORefreshUser/"},
         };
         private static Dictionary<string, string> loginUrls = new Dictionary<string, string>
         {
@@ -51,6 +55,8 @@ namespace EVEm8.CliLauncher
             {"sisi", "https://sisilogin.testeveonline.com/launcher/token?accesstoken={0}"},
             {"duality", "https://dualitylogin.testeveonline.com/launcher/token?accesstoken={0}"},
             {"mp", "https://multilogin.testeveonline.com/launcher/token?accesstoken={0}"},
+            {"quantum", "https://quantumlogin.testeveonline.com/launcher/token?accesstoken={0}"},
+            {"solace", "https://solacelogin.testeveonline.com/launcher/token?accesstoken={0}"},
             {"chaos", "https://chaoslogin.testeveonline.com/launcher/token?accesstoken={0}"},
         };
 
